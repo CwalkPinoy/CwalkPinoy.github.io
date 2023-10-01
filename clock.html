@@ -1,0 +1,56 @@
+<script type="text/javascript">
+var imageclock=new Object()
+	imageclock.digits=["c0.png", "c1.png", "c2.png", "c3.png", "c4.png", "c5.png", "c6.png", "c7.png", "c8.png", "c9.png", "cc.png"]
+	imageclock.instances=0
+	var preloadimages=[]
+	for (var i=0; i<imageclock.digits.length; i++){
+		preloadimages[i]=new Image()
+		preloadimages[i].src=imageclock.digits[i]
+	}
+
+	imageclock.imageHTML=function(timestring){
+		var sections=timestring.split(":")
+		for (var i=0; i<sections.length; i++){
+			if (sections[i].length==1)
+				sections[i]='<img src="'+imageclock.digits[0]+'" />'+'<img src="'+imageclock.digits[parseInt(sections[i])]+'" />'
+			else
+				sections[i]='<img src="'+imageclock.digits[parseInt(sections[i].charAt(0))]+'" />'+'<img src="'+imageclock.digits[parseInt(sections[i].charAt(1))]+'" />'
+		}
+		return sections[0]+'<img src="'+imageclock.digits[10]+'" />'+sections[1]+'<img src="'+imageclock.digits[10]+'" />'+sections[2]
+	}
+
+	imageclock.display=function(){
+		var clockinstance=this
+		this.spanid="clockspan"+(imageclock.instances++)
+		document.write('<span id="'+this.spanid+'"></span>')
+		this.update()
+		setInterval(function(){clockinstance.update()}, 1000)
+	}
+
+	imageclock.display.prototype.update=function(){
+		var dateobj=new Date()
+		var currenttime=dateobj.getHours()+":"+dateobj.getMinutes()+":"+dateobj.getSeconds()
+		var currenttimeHTML=imageclock.imageHTML(currenttime)
+		document.getElementById(this.spanid).innerHTML=currenttimeHTML
+
+	}
+</script>
+
+<style>
+.center {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	height: 10vw;
+	padding: 20vw;
+}
+</style>
+
+<body bgcolor="black">
+
+<div class="center">
+	<script type="text/javascript">
+		new imageclock.display()
+	</script>
+</div>
