@@ -1,5 +1,5 @@
 input[type=text], select {
-  width: 30%;
+  width: 80%;
   padding: 12px 20px;
   margin: 2px 0;
   display: inline-block;
@@ -9,7 +9,7 @@ input[type=text], select {
 }
 
 input[type=submit] {
-  width: 5%;
+  width: 15%;
   background-color: #ffffff;
   color: black;
   padding: 14px 20px;
