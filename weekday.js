@@ -2,4 +2,4 @@ const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Sa
 
 const d = new Date();
 let day = weekday[d.getDay()];
-document.write("happy " + day + "! :)");
+document.write("Happy " + day + "! :)");
