@@ -1,6 +1,6 @@
 
 // Calling showTime function at every second
-setInterval(showTime, 1000);
+setInterval(showTime, 60 * 1000);
  
 // Defining showTime funcion
 function showTime() {
